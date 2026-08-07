@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+<head>
+    <title>WinRAR Key Generator</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+</head>
+
+<body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    /* Variables base para Modo Oscuro (Por defecto) */
+    :root {
+        --bg:            #09090b;
+        --surface:       #111113;
+        --panel:         #18181b;
+        --border:        #27272a;
+        --border-hi:     #3f3f46;
+        --text:          #fafafa;
+        --muted:         #71717a;
+        --subtle:         #a1a1aa;
+        --accent:        #6366f1;
+        --accent-lo:     rgba(99,102,241,.12);
+        --accent-border: rgba(99,102,241,.3);
+        --green:         #22c55e;
+        --green-lo:      rgba(34,197,94,.12);
+        --amber:         #f59e0b;
+        --amber-lo:      rgba(245,158,11,.1);
+        --radius:        8px;
+        --radius-lg:     12px;
+        --glass-bg:      rgba(24, 24, 27, 0.5);
+        --hero-gradient: linear-gradient(135deg, rgba(99,102,241,.08) 0%, transparent 55%), linear-gradient(to right, rgba(99,102,241,.04), transparent 70%);
+        --input-placeholder: #3f3f46;
+        --shadow-options: 0 10px 25px -5px rgba(0, 0, 0, 0.7), 0 8px 10px -6px rgba(0, 0, 0, 0.7);
+        --option-hover: rgba(255, 255, 255, 0.08);
+    }
+
+    /* Variables para Modo Claro */
+    :root[data-theme="light"] {
+        --bg:            #f4f4f5;
+        --surface:       #ffffff;
+        --panel:         #fafafa;
+        --border:         #e4e4e7;
+        --border-hi:      #d4d4d8;
+        --text:          #09090b;
+        --muted:         #71717a;
+        --subtle:         #4b5563;
+        --accent:        #4f46e5;
+        --accent-lo:     rgba(79, 70, 229, 0.08);
+        --accent-border: rgba(79, 70, 229, 0.25);
+        --green:         #16a34a;
+        --green-lo:      rgba(22, 163, 74, 0.08);
+        --amber:         #d97706;
+        --amber-lo:      rgba(217, 119, 6, 0.08);
+        --glass-bg:      rgba(250, 250, 250, 0.75);
+        --hero-gradient: linear-gradient(135deg, rgba(79,70,229,.05) 0%, transparent 60%), linear-gradient(to right, rgba(79,70,229,.02), transparent 75%);
+        --input-placeholder: #a1a1aa;
+        --shadow-options: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        --option-hover: rgba(0, 0, 0, 0.04);
+    }
+
+    body {
+        font-family: 'Inter', system-ui, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+        font-size: 14px;
+        line-height: 1.5;
+        overflow-x: hidden;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Layout ── */
+    .main-wrapper {
+        width: 100%;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 28px 16px 48px;
+    }
+
+    .glass-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        overflow: visible;
+        position: relative;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* ── Navbar Superior ── */
+    .panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 24px;
+        background: var(--glass-bg);
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(8px);
+        position: relative;
+        z-index: 1000;
+        transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+
+    .brand-title {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: var(--subtle);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    /* Botón de Tema */
+    .theme-toggle-btn {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        color: var(--subtle);
+        width: 36px;
+        height: 36px;
+        border-radius: var(--radius);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: border-color 0.15s, color 0.15s, background-color 0.15s;
+    }
+    .theme-toggle-btn:hover {
+        border-color: var(--border-hi);
+        color: var(--text);
+    }
+    .theme-toggle-btn svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+    .theme-toggle-btn .sun-icon { display: none; }
+    :root[data-theme="light"] .theme-toggle-btn .moon-icon { display: none; }
+    :root[data-theme="light"] .theme-toggle-btn .sun-icon { display: block; }
+
+    /* ── Selector de Idiomas Personalizado ── */
+    .custom-select-container {
+        position: relative;
+        width: 160px;
+        user-select: none;
+    }
+
+    .select-trigger {
+        width: 100%;
+        padding: 8px 12px;
+        background: var(--panel);
+        color: var(--text);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 500;
+        outline: none;
+        transition: border-color 0.15s, box-shadow 0.15s, background-color 0.15s, color 0.15s;
+    }
+
+    .custom-select-container.open .select-trigger,
+    .select-trigger:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px var(--accent-lo);
+    }
+
+    .trigger-content {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        pointer-events: none;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .arrow {
+        font-size: 9px;
+        color: var(--muted);
+        transition: transform 0.15s ease;
+        pointer-events: none;
+        margin-left: 4px;
+    }
+
+    .custom-select-container.open .arrow {
+        transform: rotate(180deg);
+    }
+
+    .custom-options {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        right: 0;
+        background: var(--panel);
+        border: 1px solid var(--border-hi);
+        border-radius: var(--radius);
+        margin: 0;
+        padding: 4px 0;
+        list-style: none;
+        display: none; 
+        max-height: 240px;
+        overflow-y: auto;
+        z-index: 9999;
+        box-shadow: var(--shadow-options);
+    }
+
+    .custom-select-container.open .custom-options {
+        display: block;
+    }
+
+    .custom-option {
+        padding: 8px 12px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        color: var(--subtle);
+        font-size: 13px;
+        transition: background 0.15s, color 0.15s;
+    }
+
+    .custom-option:hover {
+        background: var(--option-hover);
+        color: var(--text);
+    }
+
+    .custom-option.selected {
+        background: var(--accent-lo);
+        color: var(--accent);
+        font-weight: 500;
+    }
+
+    .flag-icon, .system-icon {
+        width: 18px;
+        height: 13px;
+        border-radius: 1px;
+        object-fit: cover;
+        flex-shrink: 0;
+        display: inline-block;
+        vertical-align: middle;
+        pointer-events: none;
+    }
+    
+    .system-icon {
+        height: 14px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+    }
+
+    .custom-options::-webkit-scrollbar { width: 6px; }
+    .custom-options::-webkit-scrollbar-track { background: transparent; }
+    .custom-options::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+    .custom-options::-webkit-scrollbar-thumb:hover { background: var(--border-hi); }
+
+    /* ── Hero ── */
+    .hero {
+        padding: 32px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        position: relative;
+        overflow: hidden;
+        background: var(--hero-gradient);
+        transition: border-color 0.3s ease, background 0.3s ease;
+    }
+
+    .hero::after {
+        content: '';
+        position: absolute;
+        top: -60px; right: -60px;
+        width: 220px; height: 220px;
+        background: radial-gradient(circle, rgba(99,102,241,.12) 0%, transparent 65%);
+        pointer-events: none;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 20%; bottom: 20%;
+        width: 2px;
+        background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+        border-radius: 2px;
+    }
+
+    .hero-icon {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, #4f46e5, #818cf8);
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 4px 20px rgba(99,102,241,.3), inset 0 1px 0 rgba(255,255,255,.15);
+    }
+
+    .hero-icon svg {
+        width: 26px; height: 26px;
+        fill: none; stroke: #fff;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .hero-text { flex: 1; }
+
+    .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: var(--accent-lo);
+        border: 1px solid var(--accent-border);
+        color: var(--accent);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: .4px;
+        text-transform: uppercase;
+        margin-bottom: 8px;
+    }
+
+    .hero h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.2;
+        letter-spacing: -.02em;
+    }
+
+    .hero p {
+        color: var(--muted);
+        font-size: 13.5px;
+        margin-top: 4px;
+    }
+
+    .hero-meta {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 12px;
+    }
+
+    .hero-badge {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 12px;
+        color: var(--muted);
+    }
+
+    .hero-badge-dot {
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 6px var(--green);
+        flex-shrink: 0;
+    }
+
+    /* ── Content ── */
+    .content-wrapper {
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* ── Generator box ── */
+    .generator-box {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.02);
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .generator-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .generator-title h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text);
+    }
+
+    .reset-btn {
+        background: transparent;
+        color: var(--muted);
+        border: 1px solid transparent;
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 12px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        transition: color 0.15s, border-color 0.15s;
+    }
+    .reset-btn:hover {
+        color: var(--text);
+        border-color: var(--border);
+        background: var(--bg);
+    }
+
+    .inputs-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 4px;
+    }
+
+    .input-group { margin-bottom: 16px; position: relative; }
+    .input-group:last-child { margin-bottom: 0; }
+
+    .input-label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--subtle);
+        font-weight: 500;
+        font-size: 12px;
+        letter-spacing: .2px;
+    }
+
+    .input-hint {
+        display: block;
+        margin-top: 6px;
+        font-size: 11.5px;
+        color: var(--muted);
+        line-height: 1.4;
+    }
+
+    .char-counter {
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 11px;
+        color: var(--muted);
+    }
+    .char-counter.warning { color: var(--amber); }
+
+    .modern-input, textarea {
+        width: 100% !important;
+        border: 1px solid var(--border);
+        outline: none;
+        border-radius: var(--radius);
+        background: var(--bg);
+        color: var(--text);
+        padding: 10px 14px;
+        font-size: 13.5px;
+        font-family: inherit;
+        transition: border-color .15s, box-shadow .15s, background-color 0.15s, color 0.15s;
+    }
+
+    .modern-input:focus, textarea:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px var(--accent-lo);
+    }
+
+    .modern-input::placeholder, textarea::placeholder { color: var(--input-placeholder); }
+
+    textarea {
+        min-height: 200px;
+        resize: vertical;
+        font-family: 'JetBrains Mono', Consolas, monospace;
+        font-size: 12.5px;
+        line-height: 1.6;
+    }
+
+    textarea::-webkit-scrollbar { width: 8px; height: 8px; }
+    textarea::-webkit-scrollbar-track { background: var(--bg); }
+    textarea::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+    textarea::-webkit-scrollbar-thumb:hover { background: var(--border-hi); }
+
+    /* ── Buttons ── */
+    .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 4px;
+    }
+
+    .modern-btn {
+        border: none;
+        outline: none;
+        padding: 10px 20px;
+        border-radius: var(--radius);
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: opacity .15s, transform .15s, background-color .15s, filter .15s;
+        font-family: inherit;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .modern-btn:hover:not(:disabled)  { opacity: .9; }
+    .modern-btn:active:not(:disabled) { transform: scale(.98); }
+
+    .modern-btn:disabled {
+        opacity: .25;
+        cursor: not-allowed;
+    }
+
+    .generate-btn { background: var(--accent); color: #fff; flex: 1; min-width: 160px; }
+    .save-btn     { background: var(--green);  color: #fff; }
+
+    .generate-btn.loading {
+        pointer-events: none;
+        background: var(--border-hi);
+    }
+    .spinner {
+        width: 14px; height: 14px;
+        border: 2px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 0.8s linear infinite;
+        display: none;
+    }
+    .generate-btn.loading .spinner { display: inline-block; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .textarea-container { position: relative; width: 100%; }
+
+    .floating-copy-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: var(--surface);
+        color: var(--subtle);
+        border: 1px solid var(--border);
+        padding: 7px 14px;
+        border-radius: 6px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        z-index: 5;
+        opacity: 0;
+        transform: translateY(-4px) scale(0.95);
+        pointer-events: none;
+        transition: opacity 0.25s, transform 0.25s, background-color 0.15s, border-color 0.15s;
+        backdrop-filter: blur(4px);
+    }
+
+    .floating-copy-btn.visible { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+    .floating-copy-btn:hover { background: var(--panel); color: var(--text); border-color: var(--border-hi); }
+    .floating-copy-btn.copied { background: var(--green-lo); border-color: var(--green); color: var(--green); }
+
+    .textarea-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .textarea-header .input-label { margin-bottom: 0; }
+
+    .key-status {
+        font-size: 11px;
+        color: var(--green);
+        font-weight: 500;
+        opacity: 0;
+        transform: translateX(10px);
+        transition: opacity .25s ease, transform .25s ease;
+    }
+    .key-status.visible { opacity: 1; transform: translateX(0); }
+
+    code {
+        font-family: 'JetBrains Mono', Consolas, monospace;
+        font-size: 11.5px;
+        background: var(--accent-lo);
+        border: 1px solid var(--accent-border);
+        border-radius: 4px;
+        padding: 1px 5px;
+        color: var(--accent);
+        word-break: break-all;
+    }
+
+    /* ── Info grid ── */
+    .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .info-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 18px; transition: border-color .2s, background-color 0.3s; }
+    .info-card:hover { border-color: var(--border-hi); }
+    .info-card h3 { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    .info-card p, .info-card li { color: var(--subtle); line-height: 1.7; font-size: 12.5px; }
+    .info-card ol, .info-card ul { padding-left: 16px; }
+    .info-card li { margin-bottom: 6px; }
+    .info-card li:last-child { margin-bottom: 0; }
+
+    /* ── Section cards ── */
+    .section-card { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; transition: background-color 0.3s, border-color 0.3s; }
+    .section-card h2 { font-size: .95rem; font-weight: 600; color: var(--text); margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .section-card p { color: var(--subtle); line-height: 1.7; margin-bottom: 10px; font-size: 13px; }
+    .section-card p:last-child { margin-bottom: 0; }
+
+    /* ── License grid ── */
+    .license-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 14px; }
+    .license-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 14px; transition: border-color .15s, background .15s; cursor: pointer; user-select: none; }
+    .license-item:hover { border-color: var(--border-hi); background: var(--option-hover); }
+    .license-item.selected { border-color: var(--accent); background: var(--accent-lo); }
+    .license-item code { background: none; border: none; padding: 0; font-size: 12.5px; flex: 1; color: var(--text); }
+    .license-item.selected code { color: var(--accent); font-weight: 500; }
+    .license-item span { font-size: 11.5px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+
+    /* ── Footer ── */
+    .footer { text-align: center; padding: 16px 0 0; color: var(--muted); font-size: 11.5px; border-top: 1px solid var(--border); }
+
+    /* ── Responsive ── */
+    @media(max-width: 640px) {
+        .panel-header { flex-direction: column; gap: 12px; align-items: center; text-align: center; }
+        .brand-title { justify-content: center; }
+        .header-actions { width: 100%; flex-direction: row; justify-content: center; }
+        .custom-select-container { flex: 1; }
+        .hero { flex-direction: column; align-items: flex-start; gap: 12px; padding: 20px; }
+        .inputs-row { grid-template-columns: 1fr; gap: 12px; }
+        .info-grid  { grid-template-columns: 1fr; gap: 12px; }
+        .license-grid { grid-template-columns: 1fr; gap: 8px; }
+        .btn-group  { flex-direction: column; }
+        .modern-btn { width: 100%; justify-content: center; }
+        .main-wrapper { padding: 12px 10px 32px; }
+    }
+</style>
+
+<div class="main-wrapper">
+    <div class="glass-card">
+
+        <div class="panel-header">
+            <div class="brand-title">
+                <span id="t-nav-title">🛠️ WinRAR Control Panel</span>
+            </div>
+            
+            <div class="header-actions">
+                <button type="button" class="theme-toggle-btn" id="themeToggleBtn" title="Cambiar Tema">
+                    <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.22" x2="5.64" y2="17.78"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                </button>
+
+                <div class="custom-select-container" id="langSelectContainer">
+                    <button type="button" class="select-trigger" id="langTrigger">
+                        <span class="trigger-content" id="triggerContent"></span>
+                        <span class="arrow">▼</span>
+                    </button>
+
+                    <ul class="custom-options" id="langOptions">
+                        <li data-value="system" class="custom-option" id="opt-system">
+                            <svg class="system-icon" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                            <span class="opt-text">System</span>
+                        </li>
+                        <li data-value="es" class="custom-option">
+                            <svg class="flag-icon" viewBox="0 0 750 500"><rect width="750" height="500" fill="#c60b1e"/><rect y="125" width="750" height="250" fill="#fbe122"/></svg>
+                            <span class="opt-text">Español</span>
+                        </li>
+                        <li data-value="ca" class="custom-option">
+                            <svg class="flag-icon" viewBox="0 0 9 5"><rect width="9" height="5" fill="#fbe122"/><rect y="0.5" width="9" height="0.5" fill="#c60b1e"/><rect y="1.5" width="9" height="0.5" fill="#c60b1e"/><rect y="2.5" width="9" height="0.5" fill="#c60b1e"/><rect y="3.5" width="9" height="0.5" fill="#c60b1e"/></svg>
+                            <span class="opt-text">Català</span>
+                        </li>
+                        <li data-value="va" class="custom-option">
+                            <svg class="flag-icon" viewBox="0 0 9 5"><rect width="9" height="5" fill="#fbe122"/><rect y="0.5" width="9" height="0.5" fill="#c60b1e"/><rect y="1.5" width="9" height="0.5" fill="#c60b1e"/><rect y="2.5" width="9" height="0.5" fill="#c60b1e"/><rect y="3.5" width="9" height="0.5" fill="#c60b1e"/><rect width="2" height="5" fill="#0047ab"/></svg>
+                            <span class="opt-text">Valencià</span>
+                        </li>
+                        <li data-value="gl" class="custom-option">
+                            <svg class="flag-icon" viewBox="0 0 3 2"><rect width="3" height="2" fill="#fff"/><polygon points="0,2 3,0 3,0.4 0.6,2" fill="#6cabdd"/></svg>
+                            <span class="opt-text">Galego</span>
+                        </li>
+                        <li data-value="eu" class="custom-option">
+                            <svg class="flag-icon" viewBox="0 0 500 300"><rect width="500" height="300" fill="#2d6a4f"/><polygon points="0,0 500,300 500,300 0,0" stroke="#fff" stroke-width="40"/><polygon points="500,0 0,300 0,300 500,0" stroke="#fff" stroke-width="40"/><line x1="250" y1="0" x2="250" y2="300" stroke="#c60b1e" stroke-width="40"/><line x1="0" y1="150" x2="500" y2="150" stroke="#c60b1e" stroke-width="40"/></svg>
+                            <span class="opt-text">Euskara</span>
+                        </li>
+                        <li data-value="ast" class="custom-option">
+                            <svg class="flag-icon" viewBox="0 0 3 2"><rect width="3" height="2" fill="#6cabdd"/><polygon points="1.5,0.4 1.7,0.9 2.2,0.9 1.8,1.2 2,1.7 1.5,1.4 1,1.7 1.2,1.2 0.8,0.9 1.3,0.9" fill="#fbe122"/><line x1="1.5" y1="0" x2="1.5" y2="2" stroke="#fbe122" stroke-width="0.15"/><line x1="0" y1="1" x2="3" y2="1" stroke="#fbe122" stroke-width="0.15"/></svg>
+                            <span class="opt-text">Asturianu</span>
+                        </li>
+                        <li data-value="an" class="custom-option">
+                            <svg class="flag-icon" viewBox="0 0 3 2"><rect width="3" height="2" fill="#fbe122"/><line x1="0.6" y1="0" x2="0.6" y2="2" stroke="#c60b1e" stroke-width="0.2"/><line x1="1.2" y1="0" x2="1.2" y2="2" stroke="#c60b1e" stroke-width="0.2"/><line x1="1.8" y1="0" x2="1.8" y2="2" stroke="#c60b1e" stroke-width="0.2"/><line x1="2.4" y1="0" x2="2.4" y2="2" stroke="#c60b1e" stroke-width="0.2"/></svg>
+                            <span class="opt-text">Aragonés</span>
+                        </li>
+                        <li data-value="en" class="custom-option">
+                            <svg class="flag-icon" viewBox="0 0 60 30"><rect width="60" height="30" fill="#00247d"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#cf142b" stroke-width="4"/><path d="M30,0 L30,30 M0,15 L60,15" stroke="#fff" stroke-width="10"/><path d="M30,0 L30,30 M0,15 L60,15" stroke="#cf142b" stroke-width="6"/></svg>
+                            <span class="opt-text">English</span>
+                        </li>
+                        <li data-value="fr" class="custom-option">
+                            <svg class="flag-icon" viewBox="0 0 3 2"><rect width="1" height="2" fill="#002395"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ed2939"/></svg>
+                            <span class="opt-text">Français</span>
+                        </li>
+                        <li data-value="de" class="custom-option">
+                            <svg class="flag-icon" viewBox="0 0 5 3"><rect width="5" height="3" fill="#000"/><rect y="1" width="5" height="2" fill="#dd0000"/><rect y="2" width="5" height="1" fill="#ffce00"/></svg>
+                            <span class="opt-text">Deutsch</span>
+                        </li>
+                        <li data-value="it" class="custom-option">
+                            <svg class="flag-icon" viewBox="0 0 3 2"><rect width="1" height="2" fill="#009246"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce2b37"/></svg>
+                            <span class="opt-text">Italiano</span>
+                        </li>
+                        <li data-value="pt" class="custom-option">
+                            <svg class="flag-icon" viewBox="0 0 3 2"><rect width="1.2" height="2" fill="#006600"/><rect x="1.2" width="1.8" height="2" fill="#ff0000"/></svg>
+                            <span class="opt-text">Português</span>
+                        </li>
+                        <li data-value="ru" class="custom-option">
+                            <svg class="flag-icon" viewBox="0 0 3 2"><rect width="3" height="2" fill="#fff"/><rect y="0.66" width="3" height="1.34" fill="#0039a6"/><rect y="1.33" width="3" height="0.67" fill="#d52b1e"/></svg>
+                            <span class="opt-text">Русский</span>
+                        </li>
+                        <li data-value="zh" class="custom-option">
+                            <svg class="flag-icon" viewBox="0 0 30 20"><rect width="30" height="20" fill="#de2910"/><polygon points="3,2 4,5 1.5,3 4.5,3 2,5" fill="#ffde00"/></svg>
+                            <span class="opt-text">简体中文</span>
+                        </li>
+                        <li data-value="ja" class="custom-option">
+                            <svg class="flag-icon" viewBox="0 0 3 2"><rect width="3" height="2" fill="#fff"/><circle cx="1.5" cy="1" r="0.6" fill="#bc002d"/></svg>
+                            <span class="opt-text">日本語</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero">
+            <div class="hero-icon">
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+            </div>
+            <div class="hero-text">
+                <div class="tag" id="t-hero-tag">⚡ Herramienta de licencias</div>
+                <h1 id="t-hero-title">WinRAR Key Generator</h1>
+                <p id="t-hero-p">Genera, copia o guarda tu archivo <code>rarreg.key</code> en segundos.</p>
+                <div class="hero-meta">
+                    <span class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        <span id="t-meta-js">Solo JavaScript · sin servidor</span>
+                    </span>
+                    <span class="hero-badge" id="t-meta-usage">🔒 Solo uso personal</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+
+            <div class="generator-box">
+                <div class="generator-title">
+                    <h2 id="t-gen-title">🔐 Generador de Licencia</h2>
+                    <button type="button" class="reset-btn" id="resetBtn">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                        <span id="t-reset">Limpiar</span>
+                    </button>
+                </div>
+
+                <div class="inputs-row">
+                    <div class="input-group">
+                        <label class="input-label" for="USERNAME" id="t-label-user">Nombre de Registro</label>
+                        <span class="char-counter" id="user-counter">0/30</span>
+                        <input type="text" id="USERNAME" maxlength="30"
+                            class="modern-input" name="hint_winrarname"
+                            placeholder="Ej: John Smith">
+                        <span class="input-hint" id="t-hint-user">Solo letras, números, guion y espacio · 3–30 caracteres · Sin tildes ni ñ</span>
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label" for="LICENSETYPE" id="t-label-lic">Tipo de Licencia</label>
+                        <span class="char-counter" id="lic-counter">0/50</span>
+                        <input type="text" id="LICENSETYPE" maxlength="50"
+                            class="modern-input" name="hint_winrarorg"
+                            placeholder="Ej: Single User License">
+                        <span class="input-hint" id="t-hint-lic">Haz clic en cualquier tipo de la lista de abajo para seleccionarlo o desmarcarlo</span>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" id="but" class="modern-btn generate-btn">
+                        <div class="spinner"></div>
+                        <span id="t-btn-gen">⚡ Generar Licencia</span>
+                    </button>
+                    <button type="button" id="save" class="modern-btn save-btn" disabled>
+                        <span id="t-btn-save">💾 Guardar rarreg.key</span>
+                    </button>
+                </div>
+
+                <div class="input-group" style="margin-top:20px;">
+                    <div class="textarea-header">
+                        <label class="input-label" for="KEY" id="t-label-key">Licencia Generada</label>
+                        <span class="key-status" id="key-status"></span>
+                    </div>
+                    
+                    <div class="textarea-container">
+                        <textarea id="KEY" rows="12"
+                            class="cm-skip-check-item" readonly
+                            placeholder="La licencia generada aparecerá aquí tras pulsar ⚡ Generar…"></textarea>
+                        <button type="button" id="copyFloating" class="floating-copy-btn">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            <span id="t-btn-copy">Copiar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3 id="t-steps-title">📋 Pasos para activar</h3>
+                    <ol id="t-steps-list">
+                        </ol>
+                </div>
+
+                <div class="info-card">
+                    <h3 id="t-req-title">⚠ Requisitos del archivo</h3>
+                    <ul id="t-req-list">
+                        </ul>
+                </div>
+            </div>
+
+            <div class="section-card" id="t-about-section">
+                </div>
+
+            <div class="section-card">
+                <h2 id="t-lic-list-title">🏷 Tipos de licencia disponibles</h2>
+                <p id="t-lic-list-desc">Haz clic en cualquier fila para seleccionarla o desmarcarla:</p>
+                <div class="license-grid" id="license-grid">
+                    </div>
+            </div>
+
+            <div class="footer">© 2018 – 2026 ABTech</div>
+
+        </div>
+    </div>
+</div>
+
+    <script src="rarkeyok.js"></script>
+
+    <script>
+	const i18n = {
+		es: {
+            systemLabel: "System",
+			navTitle: "🛠️ Panel de Control WinRAR",
+			heroTitle: "Generador de Claves WinRAR",
+			heroTag: "⚡ Herramienta de licencias",
+			heroP: "Genera, copia o guarda tu archivo <code>rarreg.key</code> en segundos.",
+			metaJs: "Solo JavaScript · sin servidor",
+			metaUsage: "🔒 Solo uso personal",
+			genTitle: "🔐 Generador de Licencia",
+			reset: "Limpiar",
+			labelUser: "Nombre de Registro",
+			hintUser: "Solo letras, números, guion y espacio · Sin tildes ni ñ",
+			placeholderUser: "Ej: John Smith",
+			labelLic: "Tipo de Licencia",
+			hintLic: "Haz clic en cualquier tipo de la lista de abajo para seleccionarlo o desmarcarlo",
+			placeholderLic: "Ej: Single User License",
+			btnGen: "⚡ Generar Licencia",
+			btnGenLoading: "Procesando...",
+			btnSave: "💾 Guardar rarreg.key",
+			labelKey: "Licencia Generada",
+			placeholderKey: "La licencia generada aparecerá aquí tras pulsar ⚡ Generar…",
+			btnCopy: "Copiar",
+			btnCopied: "¡Copiado!",
+			statusCopied: "¡Contenido copiado con éxito!",
+			stepsTitle: "📋 Pasos para activar",
+			steps: [
+				"Rellena los dos campos de arriba",
+				"Pulsa <strong>⚡ Generar</strong> y espera un instante",
+				"Pulsa <strong>💾 Guardar</strong> y descarga el archivo",
+				"Asegúrate de que el nombre sea exactamente <code>rarreg.key</code>",
+				"Copia el archivo a la carpeta de instalación de WinRAR",
+				"Reinicia WinRAR para aplicar los cambios"
+			],
+			reqTitle: "⚠ Requisitos del archivo",
+			reqs: [
+				"Guardar preferiblemente con codificación <strong>ANSI</strong>",
+				"Usar solo caracteres <strong>ASCII</strong> (sin tildes ni caracteres especiales)",
+				"No editar el contenido interno del archivo key",
+				"El archivo debe llamarse estrictamente <code>rarreg.key</code>"
+			],
+			aboutTitle: "📖 ¿Qué es WinRAR?",
+			aboutP1: "<strong>WinRAR</strong> es una de las herramientas de compresión y descompresión de datos más potentes y utilizadas del mundo, desarrollada por Eugene Roshal. Permite gestionar archivos en formatos RAR, ZIP y many otros de manera rápida y eficiente, optimizando el espacio de almacenamiento y facilitando el envío de archivos grandes. Para un uso profesional, comercial y completamente legítimo, recuerde adquirir una licencia oficial en su sitio web autorizado.",
+			aboutP2: "Esta aplicación interactiva ha sido diseñada exclusivamente con fines educativos, permitiendo realizar pruebas de concepto y simulaciones funcionales. Su objetivo es ayudar a estudiantes, desarrolladores y administradores de sistemas a comprender el flujo de validación y la lógica de integración de herramientas de software en entornos controlados de aprendizaje y desarrollo.",
+			licListTitle: "🏷 Tipos de licencia disponibles",
+			licListDesc: "Haz clic en cualquier fila para seleccionarla o desmarcarla:",
+			licenses: [
+				{ code: "Single User License", label: "1 PC" },
+				{ code: "Multi User Volume Licenses", label: "2–999 PCs" },
+				{ code: "License for 1000 PCs or more", label: "1000+ PCs" },
+				{ code: "Local Site License", label: "Local Site" },
+				{ code: "Worldwide Unlimited Corporate License", label: "Global Corporate" },
+				{ code: "Academic / Educational License", label: "Academic" }
+			]
+		},
+		ca: {
+            systemLabel: "Sistema",
+			navTitle: "🛠️ Panell de Control WinRAR",
+			heroTitle: "Generador de Claus WinRAR",
+			heroTag: "⚡ Eina de llicències",
+			heroP: "Genera, copia o desa el teu fitxer <code>rarreg.key</code> en segons.",
+			metaJs: "Només JavaScript · sense servidor",
+			metaUsage: "🔒 Només ús personal",
+			genTitle: "🔐 Generador de Llicència",
+			reset: "Netejar",
+			labelUser: "Nom de Registre",
+			hintUser: "Només lletres, números, guionet i espai · Sense accents ni caràcters especials",
+			placeholderUser: "Ex: John Smith",
+			labelLic: "Tipus de Llicència",
+			hintLic: "Fes clic en qualsevol tipus de la llista de sota per seleccionar-lo o desmarcar-lo",
+			placeholderLic: "Ex: Single User License",
+			btnGen: "⚡ Generar Llicència",
+			btnGenLoading: "Processant...",
+			btnSave: "💾 Desar rarreg.key",
+			labelKey: "Llicència Generada",
+			placeholderKey: "La llicència generada apareixerà aquí després de prémer ⚡ Generar…",
+			btnCopy: "Copiar",
+			btnCopied: "¡Copiat!",
+			statusCopied: "¡Contingut copiat amb èxit!",
+			stepsTitle: "📋 Passos per activar",
+			steps: [
+				"Omple els dos camps de dalt",
+				"Prem <strong>⚡ Generar</strong> i espera un instant",
+				"Prem <strong>💾 Desar</strong> i descarrega el fitxer",
+				"Assegura't que el nom sigui exactament <code>rarreg.key</code>",
+				"Copia el fitxer a la carpeta d'instal·lació de WinRAR",
+				"Reinicia WinRAR per aplicar els canvis"
+			],
+			reqTitle: "⚠ Requisits del fitxer",
+			reqs: [
+				"Desar preferiblement con codificació <strong>ANSI</strong>",
+				"Usar només caràcters <strong>ASCII</strong> (sense accents ni caràcters especials)",
+				"No editar el contingut intern del fitxer key",
+				"El fitxer s'ha de dir estrictament <code>rarreg.key</code>"
+			],
+			aboutTitle: "📖 Què és WinRAR?",
+			aboutP1: "<strong>WinRAR</strong> és una de les eines de compressió i descompressió de dades més potents i utilitzades del món, desenvolupada per Eugene Roshal. Permet gestionar fitxers en formats RAR, ZIP i molts altres de manera ràpida i eficient, optimitzant l'espai d'emmagatzematge i facilitant l'enviament de fitxers grans. Per a un ús professional, comercial i completament legítim, recordeu adquirir una llicència oficial al seu lloc web autoritzat.",
+			aboutP2: "Aquesta aplicació interactiva ha estat dissenyada exclusivament amb fins educatius, permetent realitzar proves de concepte i simulacions funcionals. El seu objectiu és ajudar estudiants, desenvolupadors i administradors de sistemes a comprendre el flux de validació i la lògica d'integració d'eines de programari en entorns controlats d'aprenentatge i desenvolupament.",
+			licListTitle: "🏷 Tipos de llicència disponibles",
+			licListDesc: "Fes clic en qualsevol fila per seleccionar-la o desmarcar-la:",
+			licenses: [
+				{ code: "Single User License", label: "1 PC" },
+				{ code: "Multi User Volume Licenses", label: "2–999 PCs" },
+				{ code: "License for 1000 PCs or more", label: "1000+ PCs" },
+				{ code: "Local Site License", label: "Local Site" },
+				{ code: "Worldwide Unlimited Corporate License", label: "Global Corporate" },
+				{ code: "Academic / Educational License", label: "Academic" }
+			]
+		},
+		va: {
+            systemLabel: "Sistema",
+			navTitle: "🛠️ Panell de Control WinRAR",
+			heroTitle: "Generador de Claus WinRAR",
+			heroTag: "⚡ Eina de llicències",
+			heroP: "Genera, copia o guarda el teu fitxer <code>rarreg.key</code> en segons.",
+			metaJs: "Només JavaScript · sense servidor",
+			metaUsage: "🔒 Només ús personal",
+			genTitle: "🔐 Generador de Llicència",
+			reset: "Netejar",
+			labelUser: "Nom de Registre",
+			hintUser: "Només lletres, números, guionet i espai · Sense accents ni caràcters especials",
+			placeholderUser: "Ex: John Smith",
+			labelLic: "Tipus de Llicència",
+			hintLic: "Fes clic en qualsevol tipus de la llista de davall per a seleccionar-lo o desmarcar-lo",
+			placeholderLic: "Ex: Single User License",
+			btnGen: "⚡ Generar Llicència",
+			btnGenLoading: "Processant...",
+			btnSave: "💾 Guardar rarreg.key",
+			labelKey: "Llicència Generada",
+			placeholderKey: "La llicència generada apareixerà ací després de prémer ⚡ Generar…",
+			btnCopy: "Copiar",
+			btnCopied: "¡Copiat!",
+			statusCopied: "¡Contingut copiat amb èxit!",
+			stepsTitle: "📋 Passos per a activar",
+			steps: [
+				"Omple els dos camps de dalt",
+				"Prem <strong>⚡ Generar</strong> i espera un instant",
+				"Prem <strong>💾 Guardar</strong> i descarrega el fitxer",
+				"Assegura't que el nom siga exactament <code>rarreg.key</code>",
+				"Copia el fitxer a la carpeta d'instal·lació de WinRAR",
+				"Reinicia WinRAR per a aplicar els canvis"
+			],
+			reqTitle: "⚠ Requisits del fitxer",
+			reqs: [
+				"Guardar preferiblement con codificació <strong>ANSI</strong>",
+				"Usar només caràcters <strong>ASCII</strong> (sense accents ni caràcters especials)",
+				"No editar el contingut intern del fitxer key",
+				"El fitxer s'ha de dir estrictament <code>rarreg.key</code>"
+			],
+			aboutTitle: "📖 Què és WinRAR?",
+			aboutP1: "<strong>WinRAR</strong> és una de les eines de compressió i descompressió de dades més potents i utilitzades del món, desenvolupada per Eugene Roshal. Permet gestionar fitxers en formats RAR, ZIP i molts altres de manera ràpida i eficient, optimitzant l'espai d'emmagatzematge i facilitant l'enviament de fitxers grans. Per a un ús professional, comercial i completament legítim, recordeu adquirir una llicència oficial al seu lloc web autoritzat.",
+			aboutP2: "Aquesta aplicació interactiva ha estat dissenyada exclusivament amb fins educatius, permetent realitzar proves de concepte i simulacions funcionals. El seu objectiu és ajudar estudiants, desenvolupadors i administradors de sistemes a comprendre el flux de validació i la lògica d'integració d'eines de programari en entorns controlats d'aprenentatge i desenvolupament.",
+			licListTitle: "🏷 Tipos de llicència disponibles",
+			licListDesc: "Fes clic en qualsevol fila per a seleccionar-la o desmarcar-la:",
+			licenses: [
+				{ code: "Single User License", label: "1 PC" },
+				{ code: "Multi User Volume Licenses", label: "2–999 PCs" },
+				{ code: "License for 1000 PCs or more", label: "1000+ PCs" },
+				{ code: "Local Site License", label: "Local Site" },
+				{ code: "Worldwide Unlimited Corporate License", label: "Global Corporate" },
+				{ code: "Academic / Educational License", label: "Academic" }
+			]
+		},
+		gl: {
+            systemLabel: "Sistema",
+			navTitle: "🛠️ Panel de Control WinRAR",
+			heroTitle: "Xerador de Claves WinRAR",
+			heroTag: "⚡ Ferramenta de licenzas",
+			heroP: "Xera, copia ou garda o teu ficheiro <code>rarreg.key</code> en segundos.",
+			metaJs: "Só JavaScript · sen servidor",
+			metaUsage: "🔒 Só uso persoal",
+			genTitle: "🔐 Xerador de Licenza",
+			reset: "Limpar",
+			labelUser: "Nome de Rexistro",
+			hintUser: "Só letras, números, guión e espazo · Sen acentos nin caracteres especiais",
+			placeholderUser: "Ex: John Smith",
+			labelLic: "Tipo de Licenza",
+			hintLic: "Fai clic en calquera tipo da lista de abaixo para seleccionalo ou desmarcalo",
+			placeholderLic: "Ex: Single User License",
+			btnGen: "⚡ Xerar Licenza",
+			btnGenLoading: "Procesando...",
+			btnSave: "💾 Gardar rarreg.key",
+			labelKey: "Licenza Xerada",
+			placeholderKey: "La licenza xerada aparecerá aquí tras pulsar ⚡ Xerar…",
+			btnCopy: "Copiar",
+			btnCopied: "¡Copiado!",
+			statusCopied: "¡Contido copiado con éxito!",
+			stepsTitle: "📋 Pasos para activar",
+			steps: [
+				"Enche os dous campos de arriba",
+				"Preme <strong>⚡ Xerar</strong> e agarda un intre",
+				"Preme <strong>💾 Gardar</strong> e descarga o ficheiro",
+				"Asegúrate de que o nome sexa exactamente <code>rarreg.key</code>",
+				"Copia o ficheiro na carpeta de instalación de WinRAR",
+				"Reinicia WinRAR para aplicar os cambios"
+			],
+			reqTitle: "⚠ Requisitos do ficheiro",
+			reqs: [
+				"Gardar preferiblemente con codificación <strong>ANSI</strong>",
+				"Usar só caracteres <strong>ASCII</strong> (sen acentos nin caracteres especiais)",
+				"No editar o contido interno do ficheiro key",
+				"O ficheiro debe chamarse estritamente <code>rarreg.key</code>"
+			],
+			aboutTitle: "📖 Que é WinRAR?",
+			aboutP1: "<strong>WinRAR</strong> é unha das ferramentas de compresión e descompresión de datos máis potentes e utilizadas do mundo, desenvolvida por Eugene Roshal. Permite xestionar ficheiros en formatos RAR, ZIP e moitos outros de xeito rápido e eficiente, optimizando o espazo de almacenamento e facilitando o envío de ficheiros grandes. Para un uso profesional, comercial e completamente lexítimo, lembre adquirir unha licenza oficial no seu sitio web autorizado.",
+			aboutP2: "Esta aplicación interactiva foi deseñada exclusivamente con fins educativos, permitindo realizar probas de concepto e simulacións funcionais. O seu obxectivo é axudar a estudantes, desenvolvedores e administradores de sistemas a comprender o fluxo de validación e a lóxica de integración de ferramentas de software en contornas controladas de aprendizaxe e desenvolvemento.",
+			licListTitle: "🏷 Tipos de licenza dispoñibles",
+			licListDesc: "Fai clic en calquera fila para seleccionala ou desmarcala:",
+			licenses: [
+				{ code: "Single User License", label: "1 PC" },
+				{ code: "Multi User Volume Licenses", label: "2–999 PCs" },
+				{ code: "License for 1000 PCs or more", label: "1000+ PCs" },
+				{ code: "Local Site License", label: "Local Site" },
+				{ code: "Worldwide Unlimited Corporate License", label: "Global Corporate" },
+				{ code: "Academic / Educational License", label: "Academic" }
+			]
+		},
+		eu: {
+            systemLabel: "Sistema",
+			navTitle: "🛠️ WinRAR Kontrol Panela",
+			heroTitle: "WinRAR Gako Sortzailea",
+			heroTag: "⚡ Lizentzia tresna",
+			heroP: "Sortu, kopiatu edo gorde zure <code>rarreg.key</code> fitxategia segundotan.",
+			metaJs: "JavaScript bakarrik · zerbitzaririk gabe",
+			metaUsage: "🔒 Erabilera pertsonalerako bakarrik",
+			genTitle: "🔐 Lizentzia Sortzailea",
+			reset: "Garbitu",
+			labelUser: "Erregistro Izena",
+			hintUser: "Letrak, zenbakiak, gidoia eta espazioa bakarrik · Ikur berezirik gabe",
+			placeholderUser: "Adib: John Smith",
+			labelLic: "Lizentzia Mota",
+			hintLic: "Egin klik beheko zerrendako edozein motatan hautatzeko edo hautapena kentzeko",
+			placeholderLic: "Adib: Single User License",
+			btnGen: "⚡ Lizentzia Sortu",
+			btnGenLoading: "Prozesatzen...",
+			btnSave: "💾 Gorde rarreg.key",
+			labelKey: "Sortutako Lizentzia",
+			placeholderKey: "Sortutako lizentzia hemen agertuko da ⚡ Sortu sakatu ondoren…",
+			btnCopy: "Kopiatu",
+			btnCopied: "Kopiatuta!",
+			statusCopied: "Edukia ondo kopiatu da!",
+			stepsTitle: "📋 Aktibatzeko urratsak",
+			steps: [
+				"Bete goiko bi eremuak",
+				"Sakatu <strong>⚡ Sortu</strong> eta itxaron une bat",
+				"Sakatu <strong>💾 Gorde</strong> eta fitxategia deskargatu",
+				"Ziurtatu izena zehazki <code>rarreg.key</code> dela",
+				"Kopiatu fitxategia WinRAR instalazio-karpetan",
+				"Berrabiarazi WinRAR aldaketak aplikatzeko"
+			],
+			reqTitle: "⚠ Fitxategiaren baldintzak",
+			reqs: [
+				"Hobe <strong>ANSI</strong> kodetzearekin gordetzea",
+				"Erabili <strong>ASCII</strong> karaktereak bakarrik (azenturik edo ikur berezirik gabe)",
+				"Ez aldatu key fitxategiaren barruko edukia",
+				"Fitxategiak zorrotz <code>rarreg.key</code> izena izan behar du"
+			],
+			aboutTitle: "📖 Zer da WinRAR?",
+			aboutP1: "<strong>WinRAR</strong> datuak konprimitzeko eta deskonprimitzeko tresnarik indartsuenetako eta erabilienetako bat da munduan, Eugene Roshalek garatua. RAR, ZIP eta beste hainbat formatutako fitxategiak azkar eta eraginkortasunez kudeatzeko aukera ematen du, biltegiratze-espazioa optimizatuz eta fitxategi handiak bidaltzea erraztuz. Erabilera profesional, komertzial eta guztiz legitimo baterako, gogoratu lizentzia ofizial bat erostea baimendutako webgunean.",
+			aboutP2: "Aplikazio interaktibo hau hezkuntza-helburuetarako soilik diseinatu da, kontzeptu-probak eta simulazio funtzionalak egiteko aukera emanez. Bere helburua ikasleei, garatzaileei eta sistema-administratzaileei balioztatze-fluxua eta software-tresnen integrazio-logika ulertzen laguntzea da, ikaskuntza- eta garapen-ingurune kontrolatuetan.",
+			licListTitle: "🏷 Eskuragarri dauden lizentzia motak",
+			licListDesc: "Egin klik edozein lerrotan hautatzeko edo hautapena kentzeko:",
+			licenses: [
+				{ code: "Single User License", label: "1 PC" },
+				{ code: "Multi User Volume Licenses", label: "2–999 PCs" },
+				{ code: "License for 1000 PCs or more", label: "1000+ PCs" },
+				{ code: "Local Site License", label: "Local Site" },
+				{ code: "Worldwide Unlimited Corporate License", label: "Global Corporate" },
+				{ code: "Academic / Educational License", label: "Academic" }
+			]
+		},
+		ast: {
+            systemLabel: "Sistema",
+			navTitle: "🛠️ Panel de Control de WinRAR",
+			heroTitle: "Xenerador de Claves de WinRAR",
+			heroTag: "⚡ Ferramienta de llicencies",
+			heroP: "Xenera, copia o guarda'l to ficheru <code>rarreg.key</code> en segundos.",
+			metaJs: "Namái JavaScript · ensin servidor",
+			metaUsage: "🔒 Namái usu personal",
+			genTitle: "🔐 Xenerador de Llicencia",
+			reset: "Llimpiar",
+			labelUser: "Nome de Rexistru",
+			hintUser: "Namái lletres, númberos, guión y espaciu · Ensin tildes nin carauteres especiales",
+			placeholderUser: "Ex: John Smith",
+			labelLic: "Tipu de Llicencia",
+			hintLic: "Fai clic en cualquier tipu de la llista d'abaxo pa seleicionalu o desmarcalu",
+			placeholderLic: "Ex: Single User License",
+			btnGen: "⚡ Xenerar Llicencia",
+			btnGenLoading: "Procesando...",
+			btnSave: "💾 Guardar rarreg.key",
+			labelKey: "Llicencia Xenerada",
+			placeholderKey: "La llicencia xenerada va apaecer equí depués de calcar ⚡ Xenerar…",
+			btnCopy: "Copiar",
+			btnCopied: "¡Copiao!",
+			statusCopied: "¡Conteníu copiao con ésitu!",
+			stepsTitle: "📋 Pasos p'activar",
+			steps: [
+				"Enllena los dos campos d'enriba",
+				"Calca <strong>⚡ Xenerar</strong> y espera un intre",
+				"Calca <strong>💾 Guardar</strong> y descarga'l ficheru",
+				"Asegúrate de que'l nome sía exautamente <code>rarreg.key</code>",
+				"Copia'l ficheru na carpeta d'instalación de WinRAR",
+				"Reanicia WinRAR p'aplicar los cambeos"
+			],
+			reqTitle: "⚠ Requisitos del ficheru",
+			reqs: [
+				"Guardar preferiblemente con codificación <strong>ANSI</strong>",
+				"Usar namái carauteres <strong>ASCII</strong> (ensin tildes nin carauteres especiales)",
+				"Non editar el conteníu internu del ficheru key",
+				"El ficheru tien de llamase puramente <code>rarreg.key</code>"
+			],
+			aboutTitle: "📖 ¿Qué ye WinRAR?",
+			aboutP1: "<strong>WinRAR</strong> ye una de les ferramientas de compresión y descompresión de datos más potentes y utilizaes del mundu, desenvuelta por Eugene Roshal. Permite xestionar ficheros en formatos RAR, ZIP y munchos otros de manera rápida y eficiente, optimizando l'espaciu d'almacenamientu y facilitando l'unvíu de ficheros grandes. Pa un usu profesional, comercial y dafechu llexítimu, recuerde adquirir una llicencia oficial nel so sitiu web autorizáu.",
+			aboutP2: "Esta aplicación interactiva diseñóse puramente con fines educativos, dexando realizar pruebes de conceutu y simulaciones funcionales. El so oxetivu ye ayudar a estudiantes, desarrolladores y alministradores de sistemes a comprender el fluxu de validación y la lóxica d'integración de ferramientas de software n'entornos controlaos d'aprendizaxe y desarrollu.",
+			licListTitle: "🏷 Tipos de llicencia disponibles",
+			licListDesc: "Fai clic en cualquier fila pa seleicionala o desmarcala:",
+			licenses: [
+				{ code: "Single User License", label: "1 PC" },
+				{ code: "Multi User Volume Licenses", label: "2–999 PCs" },
+				{ code: "License for 1000 PCs or more", label: "1000+ PCs" },
+				{ code: "Local Site License", label: "Local Site" },
+				{ code: "Worldwide Unlimited Corporate License", label: "Global Corporate" },
+				{ code: "Academic / Educational License", label: "Academic" }
+			]
+		},
+		an: {
+            systemLabel: "Sistema",
+			navTitle: "🛠️ Panel de Control de WinRAR",
+			heroTitle: "Chenerador de Claus de WinRAR",
+			heroTag: "⚡ Ferramienta de licencias",
+			heroP: "Chenera, copia o alza o tuyo fichero <code>rarreg.key</code> en segundos.",
+			metaJs: "Nomás JavaScript · sin servidor",
+			metaUsage: "🔒 Nomás uso personal",
+			genTitle: "🔐 Chenerador de Licencia",
+			reset: "Limpiar",
+			labelUser: "Nombre de Rechistro",
+			hintUser: "Nomás letras, números, guión y espacio · Sin tildes ni caracters especials",
+			placeholderUser: "Ex: John Smith",
+			labelLic: "Tipo de Licencia",
+			hintLic: "Fai clic en qualsiquier tipo de la lista d'abaixo pa seleccionar-lo o desmarcar-lo",
+			placeholderLic: "Ex: Single User License",
+			btnGen: "⚡ Chenerar Licencia",
+			btnGenLoading: "Procesando...",
+			btnSave: "💾 Alzar rarreg.key",
+			labelKey: "Licencia Chenerada",
+			placeholderKey: "La licencia chenerada amaneixerá aquí dimpués de pulsar ⚡ Chenerar…",
+			btnCopy: "Copiar",
+			btnCopied: "¡Copiato!",
+			statusCopied: "¡Conteniu copiato con exito!",
+			stepsTitle: "📋 Pasos pa activar",
+			steps: [
+				"Plena os dos campos d'alto",
+				"Pulsa <strong>⚡ Chenerar</strong> y espera un inte",
+				"Pulsa <strong>💾 Alzar</strong> y descarga o fichero",
+				"Asegura-te que o nombre siga exactament <code>rarreg.key</code>",
+				"Copia o fichero en a carpeta d'instalación de WinRAR",
+				"Reinicia WinRAR pa aplicar os cambios"
+			],
+			reqTitle: "⚠ Requisitos d'o fichero",
+			reqs: [
+				"Alzar preferiblement con codificación <strong>ANSI</strong>",
+				"Usar nomás caracters <strong>ASCII</strong> (sin tildes ni caracters especials)",
+				"No editar o conteniu interno d'o fichero key",
+				"O fichero demana clamar-se estrictament <code>rarreg.key</code>"
+			],
+			aboutTitle: "📖 ¿Qué ye WinRAR?",
+			aboutP1: "<strong>WinRAR</strong> ye una d'as ferramientas de compresión y descompresión de datos más potents y emplegatas d'o mundo, desenvuelta por Eugene Roshal. Permite chestionar ficheros en formatos RAR, ZIP y muitos otros de traza rapida y eficient, optimizando o espacio d'almagazenamiento y facilitando o ninvío de ficheros grans. Pa un uso profesional, comercial y de tot lechitimo, recuerde adquirir una licencia oficial en o suyo sitio web autorizato.",
+			aboutP2: "Ista aplicación interactiva s'ha disenyato nomás con fins educativas, permitiendo fer prebas de concepto y simulacions funcionals. O suyo obchectivo ye aduyar a estudiants, desenvolupadors y administradors de sistemas a comprender o fluxo de validación y a lochica d'integración de ferramientas de software en arredols controlatos d'aprendizache y desenvolupamiento.",
+			licListTitle: "🏷 Tipos de licencia disponibles",
+			licListDesc: "Fai clic en qualsiquier ringlera pa seleccionar-la o desmarcar-la:",
+			licenses: [
+				{ code: "Single User License", label: "1 PC" },
+				{ code: "Multi User Volume Licenses", label: "2–999 PCs" },
+				{ code: "License for 1000 PCs or more", label: "1000+ PCs" },
+				{ code: "Local Site License", label: "Local Site" },
+				{ code: "Worldwide Unlimited Corporate License", label: "Global Corporate" },
+				{ code: "Academic / Educational License", label: "Academic" }
+			]
+		},
+		en: {
+            systemLabel: "System",
+			navTitle: "🛠️ WinRAR Control Panel",
+			heroTitle: "WinRAR Key Generator",
+			heroTag: "⚡ Licensing Tool",
+			heroP: "Generate, copy, or save your <code>rarreg.key</code> file in seconds.",
+			metaJs: "JavaScript only · Serverless",
+			metaUsage: "🔒 Personal use only",
+			genTitle: "🔐 License Generator",
+			reset: "Clear",
+			labelUser: "Registration Name",
+			hintUser: "Letters, numbers, hyphen, and spaces only · No special symbols",
+			placeholderUser: "e.g., John Smith",
+			labelLic: "License Type",
+			hintLic: "Click any type from the list below to select or unselect",
+			placeholderLic: "e.g., Single User License",
+			btnGen: "⚡ Generate License",
+			btnGenLoading: "Processing...",
+			btnSave: "💾 Save rarreg.key",
+			labelKey: "Generated License",
+			placeholderKey: "The generated license will appear here after clicking ⚡ Generate...",
+			btnCopy: "Copy",
+			btnCopied: "Copied!",
+			statusCopied: "Content successfully copied!",
+			stepsTitle: "📋 Activation Steps",
+			steps: [
+				"Fill out the two fields above",
+				"Click <strong>⚡ Generate</strong> and wait a moment",
+				"Click <strong>💾 Save</strong> and download the file",
+				"Ensure the filename is exactly <code>rarreg.key</code>",
+				"Copy the file into the WinRAR installation directory",
+				"Restart WinRAR to apply the changes"
+			],
+			reqTitle: "⚠ File Requirements",
+			reqs: [
+				"Save using <strong>ANSI</strong> encoding if possible",
+				"Use <strong>ASCII</strong> characters only — no accents or symbols",
+				"Do not modify the internal block structure",
+				"Filename must be exactly <code>rarreg.key</code>"
+			],
+			aboutTitle: "📖 What is WinRAR?",
+			aboutP1: "<strong>WinRAR</strong> is one of the most powerful and widely used data compression and decompression tools in the world, developed by Eugene Roshal. It allows you to manage RAR, ZIP, and many other file formats quickly and efficiently, optimizing storage space and making it easier to send large files. For professional, commercial, and fully legitimate use, please remember to purchase an official license from their authorized website.",
+			aboutP2: "This interactive application has been designed exclusively for educational purposes, allowing users to perform proofs of concept and functional simulations. Its goal is to help students, developers, and system administrators understand the validation workflow and integration logic of software tools within controlled learning and development environments.",
+			licListTitle: "🏷 Available License Types",
+			licListDesc: "Click on any row to select or unselect:",
+			licenses: [
+				{ code: "Single User License", label: "1 PC" },
+				{ code: "Multi User Volume Licenses", label: "2–999 PCs" },
+				{ code: "License for 1000 PCs or more", label: "1000+ PCs" },
+				{ code: "Local Site License", label: "Local Site" },
+				{ code: "Worldwide Unlimited Corporate License", label: "Global Corporate" },
+				{ code: "Academic / Educational License", label: "Academic" }
+			]
+		},
+		fr: {
+            systemLabel: "Système",
+			navTitle: "🛠️ Panneau de Configuration WinRAR",
+			heroTitle: "Générateur de Clé WinRAR",
+			heroTag: "⚡ Outil de Licence",
+			heroP: "Générez, copiez ou sauvegardez votre fichier <code>rarreg.key</code> en quelques secondes.",
+			metaJs: "JavaScript uniquement · Sans serveur",
+			metaUsage: "🔒 Usage personnel uniquement",
+			genTitle: "🔐 Générateur de Licence",
+			reset: "Effacer",
+			labelUser: "Nom d'Enregistrement",
+			hintUser: "Lettres, chiffres, traits d'union et espaces uniquement",
+			placeholderUser: "Ex: John Smith",
+			labelLic: "Type de Licence",
+			hintLic: "Cliquez pour sélectionner ou désélectionner",
+			placeholderLic: "Ex: Single User License",
+			btnGen: "⚡ Générer la Licence",
+			btnGenLoading: "Calcul...",
+			btnSave: "💾 Sauvegarder rarreg.key",
+			labelKey: "Licence Générée",
+			placeholderKey: "La licence apparaîtra ici après génération...",
+			btnCopy: "Copier",
+			btnCopied: "Copié !",
+			statusCopied: "Copié dans le presse-papiers !",
+			stepsTitle: "📋 Étapes d'activation",
+			steps: [
+				"Remplissez les champs requis",
+				"Cliquez sur <strong>⚡ Générer</strong>",
+				"Cliquez sur <strong>💾 Sauvegarder</strong>",
+				"Le fichier doit être nommé <code>rarreg.key</code>",
+				"Placez-le dans le dossier WinRAR",
+				"Redémarrez WinRAR"
+			],
+			reqTitle: "⚠ Exigences",
+			reqs: [
+				"Encodage au format <strong>ANSI</strong> recommandé",
+				"Caractères <strong>ASCII</strong> stricts",
+				"Ne pas altérer le texte généré",
+				"Nom exact : <code>rarreg.key</code>"
+			],
+			aboutTitle: "📖 À propos de WinRAR",
+			aboutP1: "<strong>WinRAR</strong> est l'un des outils de compression et de décompression de données les plus puissants et les plus utilisés au monde, développé by Eugene Roshal. Il permet de gérer les fichiers aux formats RAR, ZIP et bien d'autres de manière rapide et efficace, optimisant l'espace de stockage et facilitant l'envoi de fichiers volumineux. Pour une utilisation professionnelle, commerciale et totalement légitime, n'oubliez pas d'acquérir une licence officielle sur leur site autorisé.",
+			aboutP2: "Cette application interactive a été conçue exclusivement à des fins éducatives, permettant de réaliser des preuves de concept et des simulations fonctionnelles. Son objectif est d'aider les étudiants, les développeurs et les administrateurs système à comprendre le flux de validation et la logique d'intégration des outils logiciels dans des environnements d'apprentissage et de développement contrôlés.",
+			licListTitle: "🏷 Licences disponibles",
+			licListDesc: "Cliquez pour sélectionner ou désélectionner :",
+			licenses: [
+				{ code: "Single User License", label: "1 PC" },
+				{ code: "Multi User Volume Licenses", label: "2–999 PCs" },
+				{ code: "License for 1000 PCs or more", label: "1000+ PCs" },
+				{ code: "Local Site License", label: "Local Site" },
+				{ code: "Worldwide Unlimited Corporate License", label: "Global Corporate" },
+				{ code: "Academic / Educational License", label: "Academic" }
+			]
+		},
+		de: {
+            systemLabel: "System",
+			navTitle: "🛠️ WinRAR Systemsteuerung",
+			heroTitle: "WinRAR Lizenzschlüssel Generator",
+			heroTag: "⚡ Lizenz-Tool",
+			heroP: "Erstellen oder speichern Sie Ihre <code>rarreg.key</code> Datei.",
+			metaJs: "Nur JavaScript",
+			metaUsage: "🔒 Nur privater Gebrauch",
+			genTitle: "🔐 Lizenzgenerator",
+			reset: "Leeren",
+			labelUser: "Registrierungsname",
+			hintUser: "Nur ASCII-Zeichen, keine Umlaute",
+			placeholderUser: "z.B. John Smith",
+			labelLic: "Lizenztyp",
+			hintLic: "Klicken zum Auswählen oder Abwählen",
+			placeholderLic: "z.B. Single User License",
+			btnGen: "⚡ Generieren",
+			btnGenLoading: "Berechnen...",
+			btnSave: "💾 Speichern",
+			labelKey: "Generierter Schlüssel",
+			placeholderKey: "Wird nach Generierung angezeigt...",
+			btnCopy: "Kopieren",
+			btnCopied: "Kopiert!",
+			statusCopied: "Erfolgreich kopiert!",
+			stepsTitle: "📋 Aktivierung",
+			steps: [
+				"Felder ausfüllen",
+				"Auf Generieren klicken",
+				"Datei als <code>rarreg.key</code> speichern",
+				"In das WinRAR-Verzeichnis verschieben"
+			],
+			reqTitle: "⚠ Anforderungen",
+			reqs: [
+				"ANSI-Codierung verwenden",
+				"Dateiname muss exakt <code>rarreg.key</code> sein"
+			],
+			aboutTitle: "📖 Über WinRAR",
+			aboutP1: "<strong>WinRAR</strong> ist eines der weltweit leistungsstärksten und am häufigsten verwendeten Tools zur Datenkomprimierung und -dekomprimierung, entwickelt von Eugene Roshal. Es ermöglicht die schnelle und effiziente Verwaltung von RAR-, ZIP- und vielen anderen Dateiformaten, wodurch Speicherplatz optimiert und der Versand großer Dateien erleichtert wird. Für eine professionelle, gewerbliche und vollkommen rechtmäßige Nutzung denken Sie bitte daran, eine offizielle Lizenz auf der autorisierten Website zu erwerben.",
+			aboutP2: "Diese interaktive Anwendung wurde ausschließlich zu Bildungszwecken entwickelt und ermöglicht die Durchführung von Machbarkeitsnachweisen und funktionalen Simulationen. Ihr Ziel ist es, Studenten, Entwicklern und Systemadministratoren zu helfen, den Validierungs-Workflow und die Integrationslogik von Software-Tools in kontrollierten Lern- und Entwicklungsumgebungen zu verstehen.",
+			licListTitle: "🏷 Verfügbare Typen",
+			licListDesc: "Klicken zum Auswählen oder Abwählen:",
+			licenses: [
+				{ code: "Single User License", label: "1 PC" },
+				{ code: "Multi User Volume Licenses", label: "2–999 PCs" },
+				{ code: "License for 1000 PCs or more", label: "1000+ PCs" },
+				{ code: "Local Site License", label: "Local Site" },
+				{ code: "Worldwide Unlimited Corporate License", label: "Global Corporate" },
+				{ code: "Academic / Educational License", label: "Academic" }
+			]
+		},
+		it: {
+            systemLabel: "Sistema",
+			navTitle: "🛠️ Pannello di Controllo WinRAR",
+			heroTitle: "Generatore di Chiavi WinRAR",
+			heroTag: "⚡ Strumento Licenza",
+			heroP: "Genera, copia o salva il tuo file <code>rarreg.key</code> istantaneamente.",
+			metaJs: "Solo JavaScript · Serverless",
+			metaUsage: "🔒 Solo uso personale",
+			genTitle: "🔐 Generatore di Licenza",
+			reset: "Svuota",
+			labelUser: "Nome di Registrazione",
+			hintUser: "Solo letras, números, trattino e spazi · Senza accenti",
+			placeholderUser: "Es: John Smith",
+			labelLic: "Tipo di Licenza",
+			hintLic: "Fare clic per selezionare o deselezionare",
+			placeholderLic: "Es: Single User License",
+			btnGen: "⚡ Genera Licenza",
+			btnGenLoading: "Elaborazione...",
+			btnSave: "💾 Salva rarreg.key",
+			labelKey: "Licenza Generata",
+			placeholderKey: "La licenza apparirà qui dopo il clic...",
+			btnCopy: "Copia",
+			btnCopied: "Copiato!",
+			statusCopied: "Copia eseguita!",
+			stepsTitle: "📋 Passaggi per attivare",
+			steps: [
+				"Compila i campi richiesti",
+				"Clicca su Genera Licenza",
+				"Salva il file como <code>rarreg.key</code>",
+				"Spostalo nella cartella di WinRAR"
+			],
+			reqTitle: "⚠ Requisitos",
+			reqs: [
+				"Salvare in formato <strong>ANSI</strong>",
+				"Usa solo caratteri ASCII standard",
+				"Il nome deve essere exactamente <code>rarreg.key</code>"
+			],
+			aboutTitle: "📖 Cos'è WinRAR?",
+			aboutP1: "<strong>WinRAR</strong> è uno degli strumenti di compressione e decompressione dati più potenti e utilizzati al mondo, sviluppato da Eugene Roshal. Consente di gestire file in formato RAR, ZIP e molti altri in modo rapido ed efficiente, ottimizzando lo spazio di archiviazione e facilitando l'invio file di grandi dimensioni. Per un uso professionale, commerciale e completamente legittimo, si prega di acquistare una licenza ufficiale sul sito web autorizzato.",
+			aboutP2: "Questa applicazione interattiva è stata progettata esclusivamente a scopo didattico, consentendo di eseguire prove di concetto e simulazioni funzionali. Il suo obiettivo è aiutare studenti, sviluppatori e amministratori di sistema a comprendere il flusso di validazione e la lofica di integrazione degli strumenti software all'interno di ambienti di apprendimento e sviluppo controllati.",
+			licListTitle: "🏷 Licenze disponibili",
+			licListDesc: "Clicca per selezionare o deselezionare:",
+			licenses: [
+				{ code: "Single User License", label: "1 PC" },
+				{ code: "Multi User Volume Licenses", label: "2–999 PCs" },
+				{ code: "License for 1000 PCs or more", label: "1000+ PCs" },
+				{ code: "Local Site License", label: "Local Site" },
+				{ code: "Worldwide Unlimited Corporate License", label: "Global Corporate" },
+				{ code: "Academic / Educational License", label: "Academic" }
+			]
+		},
+		pt: {
+            systemLabel: "Sistema",
+			navTitle: "🛠️ Painel de Controle WinRAR",
+			heroTitle: "Gerador de Chaves WinRAR",
+			heroTag: "⚡ Ferramenta de Licença",
+			heroP: "Gere, copie ou salve seu arquivo <code>rarreg.key</code> rápidamente.",
+			metaJs: "Apenas JavaScript",
+			metaUsage: "🔒 Apenas uso pessoal",
+			genTitle: "🔐 Gerador de Licença",
+			reset: "Limpar",
+			labelUser: "Nome de Registro",
+			hintUser: "Apenas caracteres ASCII simples, sem acentos",
+			placeholderUser: "Ex: John Smith",
+			labelLic: "Tipo de Licença",
+			hintLic: "Clique para selecionar ou desmarcar",
+			placeholderLic: "Ex: Single User License",
+			btnGen: "⚡ Gerar Licença",
+			btnGenLoading: "Gerando...",
+			btnSave: "💾 Salvar rarreg.key",
+			labelKey: "Licença Generada",
+			placeholderKey: "O código aparecerá aqui...",
+			btnCopy: "Copiar",
+			btnCopied: "Copiado!",
+			statusCopied: "Copiado com sucesso!",
+			stepsTitle: "📋 Passos de Ativação",
+			steps: [
+				"Preencha os campos",
+				"Clique em Gerar",
+				"Salve como <code>rarreg.key</code>",
+				"Mova para a pasta do WinRAR"
+			],
+			reqTitle: "⚠ Requisitos",
+			reqs: [
+				"Codificação ideal: <strong>ANSI</strong>",
+				"Nome correto: <code>rarreg.key</code>"
+			],
+			aboutTitle: "📖 O que é o WinRAR?",
+			aboutP1: "O <strong>WinRAR</strong> é uma das ferramentas de compressão e descompressão de dados mais potentes e utilizadas no mundo, desenvolvida por Eugene Roshal. Permite gerir ficheiros nos formatos RAR, ZIP e muitos otros de forma rápida e eficiente, otimizando o espaço de armazenamento e facilitando el envio de ficheiros grandes. Para uma utilização profissional, comercial e totalmente legítima, lembre-se de adquirir uma licença oficial no seu site autorizado.",
+			aboutP2: "Esta aplicação interativa foi concebida exclusivamente para fins educativos, permitindo realizar provas de conceito e simulações funcionais. O seu objetivo es ajudar estudantes, desenvolvedores e administradores de sistemas a compreender o fluxo de validação e a lógica de integração de ferramentas de software em ambientes controlados de aprendizagem e desenvolvimento.",
+			licListTitle: "🏷 Modelos de Licença",
+			licListDesc: "Clique para selecionar ou desmarcar:",
+			licenses: [
+				{ code: "Single User License", label: "1 PC" },
+				{ code: "Multi User Volume Licenses", label: "2–999 PCs" },
+				{ code: "License for 1000 PCs or more", label: "1000+ PCs" },
+				{ code: "Local Site License", label: "Local Site" },
+				{ code: "Worldwide Unlimited Corporate License", label: "Global Corporate" },
+				{ code: "Academic / Educational License", label: "Academic" }
+			]
+		},
+		ru: {
+            systemLabel: "Система",
+			navTitle: "🛠️ Панель управления WinRAR",
+			heroTitle: "Генератор ключей WinRAR",
+			heroTag: "⚡ Инструмент лицензирования",
+			heroP: "Создайте, скопируйте или сохраните файл <code>rarreg.key</code> за секунды.",
+			metaJs: "Только JavaScript · Без сервера",
+			metaUsage: "🔒 Только для личного использования",
+			genTitle: "🔐 Генератор лицензии",
+			reset: "Сбросить",
+			labelUser: "Имя регистрации",
+			hintUser: "Только латиница, цифры и пробелы",
+			placeholderUser: "Пример: John Smith",
+			labelLic: "Тип лицензии",
+			hintLic: "Нажмите, чтобы выбрать или отменить выбор",
+			placeholderLic: "Пример: Single User License",
+			btnGen: "⚡ Создать лицензию",
+			btnGenLoading: "Генерация...",
+			btnSave: "💾 Сохранить rarreg.key",
+			labelKey: "Созданная лицензия",
+			placeholderKey: "Лицензия появится здесь после нажатия кнопки...",
+			btnCopy: "Копировать",
+			btnCopied: "Скопировано!",
+			statusCopied: "Успешно скопировано!",
+			stepsTitle: "📋 Шаги активации",
+			steps: [
+				"Заполните поля выше",
+				"Нажмите кнопку Создать лицензию",
+				"Сохраните файл под именем <code>rarreg.key</code>",
+				"Перенесите файл в папку установки WinRAR"
+			],
+			reqTitle: "⚠ Требования к файлу",
+			reqs: [
+				"Кодировка файла должна быть <strong>ANSI</strong>",
+				"Имя должно быть строго <code>rarreg.key</code>"
+			],
+			aboutTitle: "📖 Что такое WinRAR?",
+			aboutP1: "<strong>WinRAR</strong> — это один из самых мощных и широко используемых в мире инструментов для сжатия и распаковки данных, разработанный Евгением Рошалем. Он позволяет быстро и эффективно управлять файлами в форматах RAR, ZIP и многих других, оптимизируя дисковое пространство и облегчая отправку больших файлов. Для профессионального, коммерческого и полностью легального использования не забудьте приобрести официальную лицензию на авторизованном веб-сайте.",
+			aboutP2: "Это интерактивное приложение было разработано исключительно в образовательных целях для проведения проверки концепций и функционального моделирования. Его цель — помочь студентам, разработчикам и системным администраторам понять процессы валидации и логику интеграции программных инструментов в контролируемых средах обучения и разработки.",
+			licListTitle: "🏷 Доступные типы лицензий",
+			licListDesc: "Нажмите, чтобы выбрать или отменить выбор:",
+			licenses: [
+				{ code: "Single User License", label: "1 PC" },
+				{ code: "Multi User Volume Licenses", label: "2–999 PCs" },
+				{ code: "License for 1000 PCs or more", label: "1000+ PCs" },
+				{ code: "Local Site License", label: "Local Site" },
+				{ code: "Worldwide Unlimited Corporate License", label: "Global Corporate" },
+				{ code: "Academic / Educational License", label: "Academic" }
+			]
+		},
+		zh: {
+            systemLabel: "系统默认",
+			navTitle: "🛠️ WinRAR 控制面板",
+			heroTitle: "WinRAR Key Generator",
+			heroTag: "⚡ 许可证工具",
+			heroP: "快速生成、复制或保存您的 <code>rarreg.key</code> 文件。",
+			metaJs: "纯 JavaScript 运行 · 无服务器",
+			metaUsage: "🔒 仅限个人测试与内部审计",
+			genTitle: "🔐 许可证生成器",
+			reset: "重置清空",
+			labelUser: "注册用户名",
+			hintUser: "仅限英文字母、数字、连字符与空格 · 请勿输入中文或特殊符号",
+			placeholderUser: "例如: John Smith",
+			labelLic: "许可证类型",
+			hintLic: "点击下方预设项可进行选择或取消选择",
+			placeholderLic: "例如: Single User License",
+			btnGen: "⚡ 生成激活文件",
+			btnGenLoading: "正在计算...",
+			btnSave: "💾 保存 rarreg.key",
+			labelKey: "已生成的许可证数据",
+			placeholderKey: "点击生成按钮后，注册数据将在此处显示...",
+			btnCopy: "一键复制",
+			btnCopied: "已复制!",
+			statusCopied: "成功复制到剪贴板!",
+			stepsTitle: "📋 激活应用步骤",
+			steps: [
+				"填写上方所需的两项核心参数",
+				"点击 <strong>⚡ 生成激活文件</strong> 按钮",
+				"点击 <strong>💾 保存</strong> 按钮下载该密钥文件",
+				"确保文件名严格保持为 <code>rarreg.key</code>",
+				"将下载的文件移动或复制 to WinRAR 的安装根目录下",
+				"完全重启 WinRAR 软件即可完成注册状态验证"
+			],
+			reqTitle: "⚠ 关键文件要求",
+			reqs: [
+				"保存时强烈建议采用 <strong>ANSI (Windows-1252)</strong> 编码规范",
+				"仅限使用标准 <strong>ASCII</strong> 字符集，杜绝任何特殊符号",
+				"文件名称必须绝对吻合 <code>rarreg.key</code>，不可更改大小写"
+			],
+			aboutTitle: "📖 关于 WinRAR 软件",
+			aboutP1: "<strong>WinRAR</strong> 是全球功能最强大且使用最广泛的数据压缩和解压缩工具之一，由尤金·罗谢尔（Eugene Roshal）开发。它能够快速高效地管理 RAR、ZIP 及许多其他格式的文件，从而优化存储空间并简化大文件的传输。如需用于专业、商业 and 完全合法的用途，请务必在其官方授权网站上购买正版许可证书。",
+			aboutP2: "本交互式应用程序专为教育目的而设计，用于进行概念验证和功能模拟。其旨在帮助学生、开发人员和系统管理员在受控的学习与开发环境中，深入理解软件工具的验证流程及集成逻辑。",
+			licListTitle: "🏷 可选授权类型预设",
+			licListDesc: "轻点下方任意行可进行选择或取消选择：",
+			licenses: [
+				{ code: "Single User License", label: "1 PC" },
+				{ code: "Multi User Volume Licenses", label: "2–999 PCs" },
+				{ code: "License for 1000 PCs or more", label: "1000+ PCs" },
+				{ code: "Local Site License", label: "Local Site" },
+				{ code: "Worldwide Unlimited Corporate License", label: "Global Corporate" },
+				{ code: "Academic / Educational License", label: "Academic" }
+			]
+		},
+		ja: {
+            systemLabel: "システム設定",
+			navTitle: "🛠️ WinRAR コントロールパネル",
+			heroTitle: "WinRAR Key Generator",
+			heroTag: "⚡ ライセンスツール",
+			heroP: "数秒で <code>rarreg.key</code> ファイルを生成、コピー、保存します。",
+			metaJs: "JavaScript のみ · サーバーレス",
+			metaUsage: "🔒 個人利用・環境テスト用",
+			genTitle: "🔐 ライセンスジェネレーター",
+			reset: "クリア",
+			labelUser: "登録名",
+			hintUser: "半角英数字、ハイフン、スペースのみ（全角・特殊文字不可）",
+			placeholderUser: "例: John Smith",
+			labelLic: "ライセンスタイプ",
+			hintLic: "クリックすると選択または選択解除できます",
+			placeholderLic: "例: Single User License",
+			btnGen: "⚡ ライセンス生成",
+			btnGenLoading: "生成中...",
+			btnSave: "💾 rarreg.key を保存",
+			labelKey: "生成されたライセンス",
+			placeholderKey: "生成されたデータがここに表示されます...",
+			btnCopy: "コピー",
+			btnCopied: "コピー完了!",
+			statusCopied: "クリップボードにコピーしました!",
+			stepsTitle: "📋 アクティベーション手順",
+			steps: [
+				"上の2つのフィールドを入力します",
+				"<strong>⚡ ライセンス生成</strong> をクリックします",
+				"<strong>💾 保存</strong> をクリックしてファイルをダウンロードします",
+				"ファイル名が正確に <code>rarreg.key</code> であることを確認します",
+				"ファイルを WinRAR のインストールフォルダにコピーします",
+				"WinRAR を再起動すると登録が完了します"
+			],
+			reqTitle: "⚠ ファイル要件",
+			reqs: [
+				"可能な限り <strong>ANSI</strong> エンコードで保存してください",
+				"純粋な <strong>ASCII</strong> 文字のみを使用してください",
+				"ファイル名は完全に <code>rarreg.key</code> である必要があります"
+			],
+			aboutTitle: "📖 WinRAR について",
+			aboutP1: "<strong>WinRAR</strong>は、ユージン・ロシャル氏によって開発された、世界で最も強力かつ広く使用されているデータ圧縮・解凍ツールの1つです。RARやZIPをはじめとする多数のファイル形式を迅速かつ効率的に管理し、ストレージ容量を最適化するとともに、大容量ファイルの送信を容易にします。プロフェッショナルな現場、商業利用、および完全に合法的なインストールの場合は、公式の認定ウェブサイトから正規ライセンスをご購入ください。",
+			aboutP2: "このインタラクティブなアプリケーションは、教育目的のみに設計されており、概念実証や機能シミュレーションを行うことができます。その目的は、管理された学習・開発環境において、学生、開発者、およびシステム管理者がソフトウェアツールの検証フローや統合ロジックを理解できるように支援することです。",
+			licListTitle: "🏷 利用可能なライセンスタイプ",
+			licListDesc: "クリックすると選択または選択解除できます：",
+			licenses: [
+				{ code: "Single User License", label: "1 PC" },
+				{ code: "Multi User Volume Licenses", label: "2–999 PCs" },
+				{ code: "License for 1000 PCs or more", label: "1000+ PCs" },
+				{ code: "Local Site License", label: "Local Site" },
+				{ code: "Worldwide Unlimited Corporate License", label: "Global Corporate" },
+				{ code: "Academic / Educational License", label: "Academic" }
+			]
+		}
+	};
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // ── Referencias Únicas del DOM ──
+        const txtKey = document.getElementById('KEY');
+        const btnGenerar = document.getElementById('but');
+        const btnDescargar = document.getElementById('save');
+        const btnCopiarFlotante = document.getElementById('copyFloating');
+        const statusLabel = document.getElementById('key-status');
+        const inputUsername = document.getElementById('USERNAME');
+        const inputLicenseType = document.getElementById('LICENSETYPE');
+        const licenseGrid = document.getElementById('license-grid');
+        const resetBtn = document.getElementById('resetBtn');
+
+        // Selector Custom & Tema
+        const customSelectContainer = document.getElementById('langSelectContainer');
+        const langTrigger = document.getElementById('langTrigger');
+        const triggerContent = document.getElementById('triggerContent');
+        const customOptions = document.querySelectorAll('.custom-option');
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+
+        // Contadores
+        const userCounter = document.getElementById('user-counter');
+        const licCounter = document.getElementById('lic-counter');
+
+        // Textos dinámicos
+        const tNavTitle = document.getElementById('t-nav-title');
+        const tHeroTitle = document.getElementById('t-hero-title');
+        const tHeroTag = document.getElementById('t-hero-tag');
+        const tHeroP = document.getElementById('t-hero-p');
+        const tMetaJs = document.getElementById('t-meta-js');
+        const tMetaUsage = document.getElementById('t-meta-usage');
+        const tGenTitle = document.getElementById('t-gen-title');
+        const tReset = document.getElementById('t-reset');
+        const tLabelUser = document.getElementById('t-label-user');
+        const tHintUser = document.getElementById('t-hint-user');
+        const tLabelLic = document.getElementById('t-label-lic');
+        const tHintLic = document.getElementById('t-hint-lic');
+        const tBtnGen = document.getElementById('t-btn-gen');
+        const tBtnSave = document.getElementById('t-btn-save');
+        const tLabelKey = document.getElementById('t-label-key');
+        const tBtnCopy = document.getElementById('t-btn-copy');
+        const tStepsTitle = document.getElementById('t-steps-title');
+        const tStepsList = document.getElementById('t-steps-list');
+        const tReqTitle = document.getElementById('t-req-title');
+        const tReqList = document.getElementById('t-req-list');
+        const tAboutSection = document.getElementById('t-about-section');
+        const tLicListTitle = document.getElementById('t-lic-list-title');
+        const tLicListDesc = document.getElementById('t-lic-list-desc');
+
+        let currentLang = 'es';
+        const DEFAULT_LICENSE_CODE = "Single User License";
+
+        // ── 1. Control del Selector de Tema ──
+        function aplicarTema(theme) {
+            if (theme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+            localStorage.setItem('winrar_gen_theme', theme);
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            const esModoClaro = document.documentElement.getAttribute('data-theme') === 'light';
+            aplicarTema(esModoClaro ? 'dark' : 'light');
+        });
+
+        const temaGuardado = localStorage.getItem('winrar_gen_theme') || 'dark';
+        aplicarTema(temaGuardado);
+
+
+        // ── 2. Función de Traducción Dinámica ──
+        function aplicarIdioma(lang) {
+            let targetLang = lang;
+            
+            if (lang === 'system') {
+                const langNavegador = navigator.language || navigator.userLanguage || 'es';
+                const codigoCorto = langNavegador.substring(0, 2).toLowerCase();
+                targetLang = i18n[codigoCorto] ? codigoCorto : 'es';
+            }
+
+            currentLang = targetLang;
+            const data = i18n[targetLang];
+
+            document.documentElement.lang = targetLang;
+            localStorage.setItem('winrar_gen_lang', lang);
+
+            // Renderizar textos globales
+            document.title = data.heroTitle;
+            tNavTitle.textContent = data.navTitle;
+            tHeroTitle.textContent = data.heroTitle;
+            tHeroTag.innerHTML = data.heroTag;
+            tHeroP.innerHTML = data.heroP;
+            tMetaJs.textContent = data.metaJs;
+            tMetaUsage.textContent = data.metaUsage;
+            tGenTitle.textContent = data.genTitle;
+            tReset.textContent = data.reset;
+            tLabelUser.textContent = data.labelUser;
+            tHintUser.textContent = data.hintUser;
+            inputUsername.placeholder = data.placeholderUser;
+            tLabelLic.textContent = data.labelLic;
+            tHintLic.textContent = data.hintLic;
+            inputLicenseType.placeholder = data.placeholderLic;
+            
+            if(!btnGenerar.classList.contains('loading')) {
+                tBtnGen.textContent = data.btnGen;
+            } else {
+                tBtnGen.textContent = data.btnGenLoading;
+            }
+            
+            tBtnSave.textContent = data.btnSave;
+            tLabelKey.textContent = data.labelKey;
+            txtKey.placeholder = data.placeholderKey;
+            tBtnCopy.textContent = data.btnCopy;
+            tStepsTitle.textContent = data.stepsTitle;
+            tReqTitle.textContent = data.reqTitle;
+            tLicListTitle.textContent = data.licListTitle;
+            tLicListDesc.innerHTML = data.licListDesc;
+
+            tAboutSection.innerHTML = `
+                <h2>${data.aboutTitle}</h2>
+                <p>${data.aboutP1}</p>
+                <p>${data.aboutP2}</p>
+            `;
+
+            tStepsList.innerHTML = data.steps.map(step => `<li>${step}</li>`).join('');
+            tReqList.innerHTML = data.reqs.map(req => `<li>${req}</li>`).join('');
+
+            licenseGrid.innerHTML = data.licenses.map(lic => `
+                <div class="license-item" data-code="${lic.code}">
+                    <code>${lic.code || 'Custom'}</code>
+                    <span>${lic.label}</span>
+                </div>
+            `).join('');
+
+            const sysOpt = document.getElementById('opt-system');
+            if(sysOpt) {
+                sysOpt.querySelector('.opt-text').textContent = data.systemLabel;
+            }
+
+            customOptions.forEach(opt => {
+                const optVal = opt.getAttribute('data-value');
+                if (optVal === lang) {
+                    opt.classList.add('selected');
+                    triggerContent.innerHTML = opt.innerHTML;
+                } else {
+                    opt.classList.remove('selected');
+                }
+            });
+
+            vincularEventosLicencias();
+            sincronizarEstilosLicenciaActiva();
+            evaluarEstadoContenido();
+        }
+
+        // ── 3. Gestión y lógica Interactiva de las Licencias (Selección / Desactivación Toggle) ──
+        function vincularEventosLicencias() {
+            const licenciasItems = document.querySelectorAll('.license-item');
+            licenciasItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const code = item.getAttribute('data-code');
+                    
+                    // Si el elemento ya está seleccionado, lo DESACTIVAMOS (Toggle off)
+                    if (item.classList.contains('selected')) {
+                        item.classList.remove('selected');
+                        inputLicenseType.value = ''; // Borramos el contenido del input
+                    } else {
+                        // De lo contrario, limpiamos el resto y seleccionamos esta nueva
+                        licenciasItems.forEach(i => i.classList.remove('selected'));
+                        item.classList.add('selected');
+                        inputLicenseType.value = code; // Añadimos el valor al input
+                    }
+                    
+                    actualizarContadores();
+                    inputLicenseType.focus();
+                });
+            });
+        }
+
+        // Función para remarcar visualmente la tarjeta que coincida con lo escrito en el input
+        function sincronizarEstilosLicenciaActiva() {
+            const currentInputValue = inputLicenseType.value;
+            const licenciasItems = document.querySelectorAll('.license-item');
+            
+            licenciasItems.forEach(item => {
+                if (currentInputValue && item.getAttribute('data-code') === currentInputValue) {
+                    item.classList.add('selected');
+                } else {
+                    item.classList.remove('selected');
+                }
+            });
+        }
+
+        // Si el usuario edita o borra a mano el input, el grid de tarjetas se sincroniza visualmente
+        inputLicenseType.addEventListener('input', sincronizarEstilosLicenciaActiva);
+
+        // ── 4. Contadores de caracteres en vivo ──
+        function actualizarContadores() {
+            const userLen = inputUsername.value.length;
+            const licLen = inputLicenseType.value.length;
+            
+            userCounter.textContent = `${userLen}/30`;
+            licCounter.textContent = `${licLen}/50`;
+
+            if(userLen >= 28) userCounter.classList.add('warning');
+            else userCounter.classList.remove('warning');
+
+            if(licLen >= 45) licCounter.classList.add('warning');
+            else licCounter.classList.remove('warning');
+        }
+
+        inputUsername.addEventListener('input', actualizarContadores);
+        inputLicenseType.addEventListener('input', actualizarContadores);
+
+        // ── 5. Control de Estado de Interfaz ──
+        function evaluarEstadoContenido() {
+            const tieneContenido = txtKey.value.trim().length > 0;
+            btnDescargar.disabled = !tieneContenido;
+            if (tieneContenido) {
+                btnCopiarFlotante.classList.add('visible');
+            } else {
+                btnCopiarFlotante.classList.remove('visible');
+            }
+        }
+
+        // ── 6. Descarga de Archivo ──
+        function ejecutarDescargaArchivo() {
+            const textToWrite = txtKey.value;
+            if (!textToWrite.trim()) return;
+
+            const textFileAsBlob = new Blob([textToWrite], { type: 'text/plain;charset=windows-1252' });
+            const downloadLink = document.createElement("a");
+            downloadLink.download = "rarreg.key";
+            downloadLink.href = window.URL.createObjectURL(textFileAsBlob);
+            downloadLink.style.display = "none";
+            
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            
+            setTimeout(() => {
+                window.URL.revokeObjectURL(downloadLink.href);
+                document.body.removeChild(downloadLink);
+            }, 100);
+        }
+
+        // ── 7. Lógica del Selector de Idioma Personalizado ──
+        langTrigger.addEventListener('click', (e) => {
+            customSelectContainer.classList.toggle('open');
+            e.stopPropagation();
+        });
+
+        customOptions.forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const selectedLang = this.getAttribute('data-value');
+                aplicarIdioma(selectedLang);
+                customSelectContainer.classList.remove('open');
+            });
+        });
+
+        document.addEventListener('click', () => {
+            customSelectContainer.classList.remove('open');
+        });
+
+        // ── 8. Eventos Generales del Generador ──
+        btnGenerar.addEventListener('click', () => {
+            btnGenerar.classList.add('loading');
+            const data = i18n[currentLang];
+            btnGenerar.querySelector('span').textContent = data.btnGenLoading;
+
+            setTimeout(() => {
+                btnGenerar.classList.remove('loading');
+                btnGenerar.querySelector('span').textContent = data.btnGen;
+
+                // Si el nombre está vacío, mostrará "Single User License" (o lo que tú quieras)
+				const userValue = removeAccents(inputUsername.value, "Anonymous");
+				
+				// Si el tipo de licencia está vacío, mostrará "Unlimited Business License"
+				const licenseValue = removeAccents(inputLicenseType.value, DEFAULT_LICENSE_CODE);
+                
+                txtKey.value = app(userValue, licenseValue);
+                evaluarEstadoContenido();
+            }, 350);
+        });
+
+        btnDescargar.addEventListener('click', ejecutarDescargaArchivo);
+
+        resetBtn.addEventListener('click', () => {
+            inputUsername.value = '';
+            inputLicenseType.value = '';
+            txtKey.value = '';
+            document.querySelectorAll('.license-item').forEach(i => i.classList.remove('selected'));
+            actualizarContadores();
+            evaluarEstadoContenido();
+        });
+
+        btnCopiarFlotante.addEventListener('click', async () => {
+            if (!txtKey.value) return;
+
+            try {
+                await navigator.clipboard.writeText(txtKey.value);
+                const data = i18n[currentLang];
+                
+                btnCopiarFlotante.classList.add('copied');
+                btnCopiarFlotante.querySelector('span').textContent = data.btnCopied;
+                
+                if (statusLabel) {
+                    statusLabel.textContent = data.statusCopied;
+                    statusLabel.classList.add('visible');
+                }
+
+                setTimeout(() => {
+                    btnCopiarFlotante.classList.remove('copied');
+                    btnCopiarFlotante.querySelector('span').textContent = data.btnCopy;
+                    if (statusLabel) statusLabel.classList.remove('visible');
+                }, 2000);
+
+            } catch (err) {
+                console.error('Error al acceder al portapapeles: ', err);
+            }
+        });
+
+        // ── 9. Inicialización Base ──
+        function obtenerIdiomaInicial() {
+            const guardado = localStorage.getItem('winrar_gen_lang');
+            if (guardado) return guardado;
+            return 'system';
+        }
+
+        // 1. Establecer primero el valor predeterminado en el INPUT físico
+        inputLicenseType.value = DEFAULT_LICENSE_CODE;
+
+        // 2. Inicializar los idiomas y renderizar la interfaz (Esto activará el resaltado visual)
+        const idiomaFinal = obtenerIdiomaInicial();
+        aplicarIdioma(idiomaFinal);
+        actualizarContadores();
+    });
+    </script>
+</body>
+</html>
